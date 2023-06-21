@@ -1,13 +1,14 @@
-package model;
+package com.tiendaelectronica.model;
 
 public class Cliente {
 	private String nombre;
 	private String rut;
 	private String correo;
-	public Tienda unnamed_Tienda_;
 
-	public Cliente(String nombre, String rut, String correo) {
-		throw new UnsupportedOperationException();
+	public Cliente( String rut, String nombre,String correo) {
+		this.nombre = nombre;
+		this.rut = rut;
+		this.correo = correo;
 	}
 
 	public String getNombre() {
@@ -26,7 +27,8 @@ public class Cliente {
 		this.correo = correo;
 	}
 
+	@Override
 	public String toString() {
-		throw new UnsupportedOperationException();
+		return nombre +"," + rut + "," + correo;
 	}
 }

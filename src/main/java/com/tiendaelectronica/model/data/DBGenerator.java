@@ -11,7 +11,8 @@ public class DBGenerator {
         DSLContext create = DSL.using(connection);
         crearBaseDato(create, nombreBD);
         create = actualizarConexion(connection, nombreBD);
-        crearTablaLibro(create);
+        crearTablaCliente(create);
+        crearTablaArticulo(create);
         DBConnector.closeConnection();
     }
     //Metodo para conectarse a una base de datos ya creada
@@ -30,13 +31,18 @@ public class DBGenerator {
         DSLContext create =DSL.using(connection);
         return create;
     }
-    private static void crearTablaLibro(DSLContext create) {
-        create.createTableIfNotExists( "Libro")
+    private static void crearTablaCliente(DSLContext create) {
+        create.createTableIfNotExists( "Cliente")
+                .column("rut", VARCHAR(12)).constraint(primaryKey("rut"))
+                .column("nombre", VARCHAR(100))
+                .column("correo", VARCHAR(70)).execute();
+    }
+    public static void crearTablaArticulo(DSLContext create){
+        create.createTableIfNotExists("Articulo")
                 .column("id", INTEGER.identity(true)).constraint(primaryKey("id"))
-                .column("titulo", VARCHAR(100))
-                .column("autor", VARCHAR(70))
-                .column("fecha_publicacion", VARCHAR(20))
-                .column("genero",VARCHAR(20))
-                .column("stock",INTEGER).execute();
+                .column("nombre",VARCHAR(20))
+                .column("peso",DOUBLE)
+                .column("precio",INTEGER)
+                .column("categoria",VARCHAR(25)).execute();
     }
 }

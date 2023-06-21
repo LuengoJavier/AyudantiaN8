@@ -1,13 +1,17 @@
-package model;
+package com.tiendaelectronica.model;
+import java.util.ArrayList;
 
 public class Tienda {
 	private String nombre;
 	private String direccion;
-	public Articulo unnamed_Articulo_;
-	public Cliente unnamed_Cliente_;
+	public ArrayList<Articulo> articulos;
+	public ArrayList<Cliente> clientes;
 
 	public Tienda(String nombre, String direccion) {
-		throw new UnsupportedOperationException();
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.articulos = new ArrayList<>();
+		this.clientes = new ArrayList<>();
 	}
 
 	public String getNombre() {
@@ -20,5 +24,13 @@ public class Tienda {
 
 	public String getDireccion() {
 		return this.direccion;
+	}
+
+	public ArrayList<Articulo> getArticulos() {
+		return articulos;
+	}
+
+	public ArrayList<Cliente> getClientes() {
+		return clientes;
 	}
 }
